@@ -1,0 +1,6 @@
+name: NMLConfig
+version: '${version}'
+
+main: io.github.NoOne.nMLConfig.NMLConfig
+api-version: '26.3'
+load: POSTWORLD
