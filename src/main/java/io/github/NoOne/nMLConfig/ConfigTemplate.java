@@ -19,23 +19,25 @@ public class ConfigTemplate {
         this.fileName = filename;
         file = new File(javaPlugin.getDataFolder(), filename + ".yml");
         config = new YamlConfiguration();
-    }
 
-    public void loadConfig() {
-        if (!file.exists()) {
-            file.getParentFile().mkdirs();
-            javaPlugin.saveResource(fileName + ".yml", false);
-        } try {
-            config.load(file);
-        } catch (IOException | InvalidConfigurationException exception) {
-            exception.printStackTrace();
-        }
+        loadConfig();
     }
 
     public void saveConfig() {
         try {
             config.save(file);
         } catch (IOException exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    private void loadConfig() {
+        if (!file.exists()) {
+            file.getParentFile().mkdirs();
+            javaPlugin.saveResource(fileName + ".yml", false);
+        } try {
+            config.load(file);
+        } catch (IOException | InvalidConfigurationException exception) {
             exception.printStackTrace();
         }
     }
